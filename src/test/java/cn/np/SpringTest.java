@@ -1,6 +1,7 @@
 package cn.np;
 
 import cn.np.spring.BeanLifeCycle;
+import cn.np.spring.TestBeanPostProcessor;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -22,7 +23,9 @@ public class SpringTest {
     @Test
     public void beanLifeCycleTest(){
 
-        BeanLifeCycle beanLifeCycle =context.getBean("beanLifeCycle",BeanLifeCycle.class);
-        context.registerShutdownHook();
+    //    BeanLifeCycle beanLifeCycle =context.getBean("beanLifeCycle",BeanLifeCycle.class);
+    //    TestBeanPostProcessor beanLifeCycle =context.getBean("testBeanPostProcessor",TestBeanPostProcessor.class);
+        context.destroy();
+    //    context.registerShutdownHook();
     }
 }
