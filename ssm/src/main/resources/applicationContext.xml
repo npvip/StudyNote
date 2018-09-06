@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <context:component-scan base-package="ssm">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+
+    <!--引入配置文件-->
+    <context:property-placeholder location="classpath:conf/db.properties"></context:property-placeholder>
+
+    <!--数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${mysql.driver}"></property>
+        <property name="jdbcUrl" value="${mysql.url}"></property>
+        <property name="user" value="${mysql.username}"></property>
+        <property name="password" value="${mysql.password}"></property>
+    </bean>
+
+    <!--事物管理器-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--开启基于事物的注解-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
+
+    <!--mybatis-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:conf/mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath*:mybatis.mapper/*.xml"></property>
+    </bean>
+    <!--扫描mapper接口-->
+    <mybatis-spring:scan base-package="ssm.dao"></mybatis-spring:scan>
+
+
+</beans>
