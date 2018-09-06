@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.np.mybatis.mapper.BlogMapper">
+
+    <cache eviction="FIFO" readOnly="false" flushInterval="30000"></cache>
+
+    <!--使用级联属性-->
+    <resultMap id="blogAndAuthor" type="cn.np.mybatis.bean.Blog">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="aid" property="author.id"></result>
+        <result column="name" property="author.name"></result>
+        <result column="desp" property="author.desp"></result>
+    </resultMap>
+
+    <!--使用association-->
+    <resultMap id="blogAndAuthor2" type="cn.np.mybatis.bean.Blog">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <result column="aid" property="author.id"></result>
+        <association property="author" javaType="cn.np.mybatis.bean.Author">
+            <id column="aid" property="id"></id>
+            <result column="name" property="name"></result>
+            <result column="desp" property="desp"></result>
+        </association>
+    </resultMap>
+
+    <select id="queryBlogById" resultType="Blog">
+      select * from Blog where id = #{id}
+    </select>
+
+    <insert id="insertBlog" useGeneratedKeys="true" keyProperty="id">
+      insert into Blog (id,title,content)
+      values (#{id},#{title},#{content})
+    </insert>
+
+    <select id="queryList" resultType="Blog">
+        select * from Blog where title like #{title} order by ${colomn} desc
+    </select>
+
+    <select id="queryMapByTitle" resultType="Blog">
+        select * from Blog where title like #{title}
+    </select>
+
+    <select id="queryBlogWithAuthorById" resultMap="blogAndAuthor2">
+        select b.id id,b.title title,b.content content,a.id aid,a.name name,a.desp desp from Blog b,Author a where b.author_id=a.id and b.id=#{id}
+    </select>
+
+
+    <!--使用association分步查询-->
+    <resultMap id="blogAndAuthor3" type="cn.np.mybatis.bean.Blog">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+        <association property="author" select="cn.np.mybatis.mapper.AuthorMapper.queryAuthorById" column="author_id">
+        </association>
+    </resultMap>
+    <select id="queryBlogWithAuthorById2" resultMap="blogAndAuthor3">
+        select * from Blog where id=#{id}
+    </select>
+
+
+
+</mapper>

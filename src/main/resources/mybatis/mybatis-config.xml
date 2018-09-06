@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="conf/db.properties"></properties>
+    
+
+    <!--别名处理器 别名不区分大小写-->
+    <typeAliases>
+        <!--<typeAlias type="cn.np.mybatis.bean.Blog" alias="Blog"></typeAlias>-->
+
+        <!--批量起别名，name指定包名-->
+        <package name="cn.np.mybatis.bean"></package>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--<mapper resource="cn.np.mybatis/mapper/BlogMapper.xml"/>-->
+        <package name="cn.np.mybatis.mapper"></package>
+    </mappers>
+
+
+
+</configuration>

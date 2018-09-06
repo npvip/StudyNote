@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.np.mybatis.mapper.AuthorMapper">
+
+    <select id="queryAuthorById" resultType="author">
+        select * from Author where id=#{id}
+    </select>
+
+
+    <!--collections-->
+    <resultMap id="authorWithBlog" type="author">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="desp" property="desp"></result>
+
+        <collection property="blogs" ofType="cn.np.mybatis.bean.Blog">
+            <id column="bid" property="id"></id>
+            <result column="title" property="title"></result>
+            <result column="content" property="content"></result>
+        </collection>
+    </resultMap>
+
+    <select id="queryAuthorWithBlogById" resultMap="authorWithBlog">
+        select a.id id,a.name name,a.desp desp ,b.id bid,b.title title,b.content content from Author a left join Blog b on a.id=b.author_id where a.id=#{id}
+    </select>
+
+</mapper>

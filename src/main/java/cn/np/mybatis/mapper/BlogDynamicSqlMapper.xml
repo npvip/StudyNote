@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.np.mybatis.mapper.BlogDynamicSqlMapper">
+
+    <!--if-->
+    <select id="queryBlogsByIf" resultType="blog">
+        select * from Blog where 1=1
+        <if test="id!=null and id!=0">
+            and id=#{id}
+        </if>
+        <if test="title!=null and title!=''">
+            and title like #{title}
+        </if>
+
+    </select>
+
+    <!--where-->
+    <select id="queryBlogsByWhere" resultType="blog">
+        select * from Blog
+        <where>
+            <if test="id!=null and id!=0">
+                id=#{id}
+            </if>
+            <if test="title!=null and title!=''">
+                and title like #{title}
+            </if>
+        </where>
+    </select>
+
+    <!--trim-->
+    <select id="queryBlogsByTrim" resultType="blog">
+        select * from Blog
+        <trim prefix="where" prefixOverrides="and" suffixOverrides="and">
+            <if test="id!=null and id!=0">
+                id=#{id} and
+            </if>
+            <if test="title!=null and title!=''">
+                title like #{title} and
+            </if>
+        </trim>
+    </select>
+
+    <!--choose-->
+    <select id="queryBlogsByChoose" resultType="blog">
+        select * from Blog
+        <where>
+            <choose>
+                <when test="id!=null and id!=0">
+                    id=#{id}
+                </when>
+                <when test="title!=null and title!=''">
+                    title like #{title}
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateBlog">
+        update Blog
+        <set>
+            <if test="content!=null and content!=''">
+                content=#{content},
+            </if>
+            <if test="title!=null and title!=''">
+                title=#{title},
+            </if>
+        </set>
+        where id=#{id}
+
+    </update>
+
+
+</mapper>
