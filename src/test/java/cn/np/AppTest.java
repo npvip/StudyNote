@@ -17,4 +17,20 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+
+    @Test
+    public void yinyong(){
+        StringBuffer stringBuffer=new StringBuffer("abc");
+        System.out.println(stringBuffer);
+        change(stringBuffer);
+        System.out.println(stringBuffer);
+
+    }
+
+
+    private static void change(StringBuffer s){
+        s=new StringBuffer("plm");
+        s.append("123");
+    }
 }

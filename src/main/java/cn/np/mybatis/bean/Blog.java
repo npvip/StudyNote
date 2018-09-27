@@ -15,6 +15,16 @@ public class Blog implements Serializable {
 
     private Author author;
 
+    public Blog() {
+    }
+
+    public Blog(int id,String title, String content) {
+        this.id=id;
+        this.title = title;
+        this.content = content;
+        this.author=new Author(5,"张三","三国猛将");
+
+    }
 
     public Author getAuthor() {
         return author;

@@ -25,4 +25,6 @@ public interface BlogMapper {
     Blog queryBlogWithAuthorById(@Param("id")int id);
 
     Blog queryBlogWithAuthorById2(@Param("id")int id);
+
+    List<Blog> queryAllBlog();
 }

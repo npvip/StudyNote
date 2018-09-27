@@ -1,7 +1,5 @@
 package cn.np;
 
-import cn.np.spring.BeanLifeCycle;
-import cn.np.spring.TestBeanPostProcessor;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -28,4 +26,11 @@ public class SpringTest {
         context.destroy();
     //    context.registerShutdownHook();
     }
+
+    @Test
+    public void aa(){
+
+        System.out.println("ok");
+    }
+
 }

@@ -34,8 +34,8 @@
     </select>
 
     <insert id="insertBlog" useGeneratedKeys="true" keyProperty="id">
-      insert into Blog (id,title,content)
-      values (#{id},#{title},#{content})
+      insert into Blog (id,title,content,author_id)
+      values (#{id},#{title},#{content},#{author.id})
     </insert>
 
     <select id="queryList" resultType="Blog">
@@ -59,10 +59,14 @@
         <association property="author" select="cn.np.mybatis.mapper.AuthorMapper.queryAuthorById" column="author_id">
         </association>
     </resultMap>
+
     <select id="queryBlogWithAuthorById2" resultMap="blogAndAuthor3">
         select * from Blog where id=#{id}
     </select>
 
+    <select id="queryAllBlog" resultType="cn.np.mybatis.bean.Blog">
+        select * from Blog
+    </select>
 
 
 </mapper>

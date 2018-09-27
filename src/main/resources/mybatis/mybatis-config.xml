@@ -8,11 +8,15 @@
 
     <!--别名处理器 别名不区分大小写-->
     <typeAliases>
-        <!--<typeAlias type="cn.np.mybatis.bean.Blog" alias="Blog"></typeAlias>-->
+        <!--<typeAlias type="cn.np.mybatis.ssm.bean.Blog" alias="Blog"></typeAlias>-->
 
         <!--批量起别名，name指定包名-->
         <package name="cn.np.mybatis.bean"></package>
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
 
     <environments default="development">
         <environment id="development">

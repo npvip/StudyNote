@@ -5,12 +5,14 @@ import cn.np.mybatis.bean.Blog;
 import cn.np.mybatis.mapper.AuthorMapper;
 import cn.np.mybatis.mapper.BlogDynamicSqlMapper;
 import cn.np.mybatis.mapper.BlogMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,26 +26,29 @@ import java.util.Map;
  */
 public class MybatisTest {
 
-    private SqlSession sqlSession;
 
-    @Before
-    public void getSqlSession() throws IOException {
+    /**
+     * 获取 SqlSessionFactory
+     *
+     */
+    public static SqlSessionFactory getSqlSessionFactory(){
         String resource = "mybatis/mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
+        InputStream inputStream = null;
+        try {
+            inputStream = Resources.getResourceAsStream(resource);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SqlSessionFactory sqlSessionFactory =
                 new SqlSessionFactoryBuilder().build(inputStream);
+        return  sqlSessionFactory;
 
-        sqlSession = sqlSessionFactory.openSession();
     }
-
-    @After
-    public void closeSession() {
-        sqlSession.close();
-    }
-
 
     @Test
     public void selectDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
+
         /**
          * 一种方式
          *
@@ -54,13 +59,18 @@ public class MybatisTest {
 
         //接口式编程，动态代理实现
         BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
+        System.out.println("mapper:"+mapper);
         Blog blog=mapper.queryBlogById(2);
         System.out.println(blog);
+
+        sqlSession.close();
     }
 
 
     @Test
     public void insertDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
+
         Blog blog = new Blog();
         blog.setTitle("这是一个标题");
         blog.setContent("这是一篇文章");
@@ -74,6 +84,7 @@ public class MybatisTest {
 
     @Test
     public void selectMapDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
@@ -83,6 +94,7 @@ public class MybatisTest {
 
     @Test
     public void selectListDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
@@ -94,6 +106,7 @@ public class MybatisTest {
 
     @Test
     public void selectBlogWithAuthorDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
@@ -104,6 +117,7 @@ public class MybatisTest {
 
     @Test
     public void selectBlogWithAuthor2Demo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
@@ -114,6 +128,7 @@ public class MybatisTest {
 
     @Test
     public void selecAuthorWithBlogDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         AuthorMapper mapper=sqlSession.getMapper(AuthorMapper.class);
@@ -124,6 +139,7 @@ public class MybatisTest {
 
     @Test
     public void selecBlogsDynamicSqlDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogDynamicSqlMapper mapper=sqlSession.getMapper(BlogDynamicSqlMapper.class);
@@ -136,6 +152,7 @@ public class MybatisTest {
 
     @Test
     public void updateBlogsDynamicSqlDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogDynamicSqlMapper mapper=sqlSession.getMapper(BlogDynamicSqlMapper.class);
@@ -156,6 +173,7 @@ public class MybatisTest {
      */
     @Test
     public void cacheDemo() {
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
 
         //接口式编程，动态代理实现
         BlogMapper mapper1=sqlSession.getMapper(BlogMapper.class);
@@ -193,6 +211,40 @@ public class MybatisTest {
         System.out.println(blog2);
         sqlSession2.close();
 
+    }
+
+    /**
+     * 分页插件
+     */
+    @Test
+    public void pageHelperTest(){
+        SqlSession sqlSession=getSqlSessionFactory().openSession();
+        BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
+        Page<Object> pageBlog=PageHelper.startPage(1,2);
+        List<Blog> allBlogs=mapper.queryAllBlog();
+        System.out.println(allBlogs);
+
+        System.out.println(pageBlog.getPageNum());
+        System.out.println(pageBlog.getTotal());
+        sqlSession.close();
+
+    }
+
+    @Test
+    public void batchInsert(){
+        SqlSession sqlSession=getSqlSessionFactory().openSession(ExecutorType.BATCH);
+        BlogMapper mapper=sqlSession.getMapper(BlogMapper.class);
+
+        long startTime=System.currentTimeMillis();
+        for(int i=1001;i<2000;i++){
+            mapper.insertBlog(new Blog(i,"title"+i,"content"+i));
+        }
+
+        sqlSession.commit();
+        sqlSession.close();
+        long endTime=System.currentTimeMillis();
+
+        System.out.println("执行的时间："+(endTime-startTime)+"毫秒");
     }
 
 }

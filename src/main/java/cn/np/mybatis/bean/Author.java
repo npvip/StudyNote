@@ -13,6 +13,15 @@ public class Author implements Serializable {
     private String desp;
     private List<Blog> blogs;
 
+    public Author() {
+    }
+
+    public Author(int id,String name, String desp) {
+        this.id=id;
+        this.name = name;
+        this.desp = desp;
+    }
+
     public int getId() {
         return id;
     }
