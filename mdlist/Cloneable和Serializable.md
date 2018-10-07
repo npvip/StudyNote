@@ -11,8 +11,8 @@
 
 `实现步骤`  
 1. 实现接口Cloneable  
-2. 重写clone()方法 
-[demo](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/common/CloneDemo.java)  
+2. 重写clone()方法  
+代码演示：[demo](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/common/CloneDemo.java)  
  
 
 ## 深克隆    
@@ -28,7 +28,7 @@
 * 把对象通过网络进行传输时 
  
 ## 实现  
-[demo](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/common/SerializableDemo.java)  
+代码演示：[demo](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/common/SerializableDemo.java)  
 `注意`  
 * 序列化只保存对象的非静态成员变量的值。  
 * `serialVersionUID`需一致才能完成反序列化操作得到对象信息，否则抛异常InvalidClassException。  

@@ -8,9 +8,8 @@ public @interface MyAnnotation {
     
 }
 ```
-
-2. 元注解  
 ---
+2. 元注解  
 元注解是可以注解到注解上的注解, 是一种基本的注解。  
 元标签包含:  `@Retention`, `@Documented`, `@Target`, `@Inherited`, `@Repeatable`  
 
@@ -39,14 +38,15 @@ public @interface MyAnnotation {
 
 * `@Repeatable`  
 java8的一个新特性，可以被重复注解。  
-
+---
 3. java内置的注解  
   * @Deprecated: 过时的方法、类、成员变量，编译器会警告提醒。  
   * @Override: 提示子类重写父类的方法。
   * @SuppressWarnings: 阻止警告的意思。  
   * @FunctionalInterface: 函数式接口注解，java8引进的新特性。  
   * @SafeVarargs: 参数安全类型检查。      
-    
+  
+---    
 4. 注解的属性  
 注解只有成员变量，没有方法。注解的成员变量即为注解的属性。下面代码定义了注解MyAnnotation用于id和msg属性，可以使用default设置属性默认值：  
 ```java
@@ -56,7 +56,8 @@ public @interface MyAnnotation {
     int id() default 0;
     String msg() default "Hello";
 }
-```  
+```
+---  
 5. 注解的提取  
 [使用反射取提取](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/annotation/TestAnnotation.java)
  
