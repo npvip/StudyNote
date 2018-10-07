@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.HashMap</OriginalElement>
+  <nodes>
+    <node x="201.00000000000006" y="85.0">java.lang.Cloneable</node>
+    <node x="372.00000000000006" y="85.0">java.util.AbstractMap</node>
+    <node x="463.4166666666667" y="0.0">java.util.Map</node>
+    <node x="301.50000000000006" y="170.0">java.util.HashMap</node>
+    <node x="0.0" y="85.0">java.io.Serializable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.HashMap" target="java.util.Map">
+      <point x="49.125" y="-17.5" />
+      <point x="416.12500000000006" y="150.0" />
+      <point x="553.5" y="150.0" />
+      <point x="553.5" y="60.0" />
+      <point x="531.6666666666667" y="60.0" />
+      <point x="22.75" y="17.5" />
+    </edge>
+    <edge source="java.util.HashMap" target="java.lang.Cloneable">
+      <point x="-16.375" y="-17.5" />
+      <point x="350.62500000000006" y="140.0" />
+      <point x="276.50000000000006" y="140.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.util.HashMap" target="java.util.AbstractMap">
+      <point x="16.375" y="-17.5" />
+      <point x="383.37500000000006" y="140.0" />
+      <point x="457.50000000000006" y="140.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+    <edge source="java.util.AbstractMap" target="java.util.Map">
+      <point x="0.0" y="-17.5" />
+      <point x="457.50000000000006" y="60.0" />
+      <point x="486.1666666666667" y="60.0" />
+      <point x="-22.75" y="17.5" />
+    </edge>
+    <edge source="java.util.HashMap" target="java.io.Serializable">
+      <point x="-49.125" y="-17.5" />
+      <point x="317.87500000000006" y="150.0" />
+      <point x="90.5" y="150.0" />
+      <point x="0.0" y="17.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="100.5" y="86.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
