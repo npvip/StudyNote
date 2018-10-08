@@ -1,7 +1,6 @@
 # HashMap简介  
 HashMap是最常见的集合类之一，用于存储健值对（key-value）。  
-![HashMap]  
-(https://github.com/npvip/StudyNote/blob/master/img/HashMap.png)  
+![HashMap](https://github.com/npvip/StudyNote/blob/master/img/HashMap.png)  
 
 # 底层数据结构  
 JDK1.8之前HashMap的底层数据结构是 **数组+单链表**，链表的作用是为了解决哈希冲突。  
@@ -218,5 +217,4 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
         return null;
     }
 ```
-![流程图]
-(https://github.com/npvip/StudyNote/blob/master/img/put.png) 
+![流程图](https://github.com/npvip/StudyNote/blob/master/img/put.png) 
