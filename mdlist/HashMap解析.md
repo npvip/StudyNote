@@ -1,14 +1,12 @@
 # HashMap简介  
-HashMap是最常见的集合类之一，用于存储健值对（key-value）。  
+HashMap是最常见的集合类之一，用于存储健值对（key-value），是面试中最常见的考察点。  
 ![HashMap](https://github.com/npvip/StudyNote/blob/master/img/HashMap.png)  
-
-# 底层数据结构  
-JDK1.8之前HashMap的底层数据结构是 **数组+单链表**，链表的作用是为了解决哈希冲突。  
-JDK1.8之后在解决哈希冲突时，当链表长度大于阀值（默认为8）时，将链表转化为红黑树，以加快查找的速度。  
-
+  
+---
 # 思路 
-* 数据结构  
-
+* *数据结构*  
+JDK1.8之前HashMap的底层数据结构是 **数组+单链表**，链表的作用是为了解决哈希冲突。  
+JDK1.8之后在解决哈希冲突时，当链表长度大于阀值（默认为8）时，将链表转化为红黑树，以加快查找的速度。
 ```
 static class Node<K,V> implements Map.Entry<K,V> {
         final int hash;
@@ -50,7 +48,8 @@ static class Node<K,V> implements Map.Entry<K,V> {
         }
     }
 ``` 
-* `扩容`  
+---
+* *扩容*  
 ```
     /**
      * Initializes or doubles table size.  If null, allocates in
@@ -160,7 +159,8 @@ if ((tab = table) == null || (n = tab.length) == 0)
 if (++size > threshold)
             resize();
 ```
-* 添加操作  
+---
+* *添加操作*  
 ```
 // 获取键key的hash值
 static final int hash(Object key) {
@@ -217,4 +217,31 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
         return null;
     }
 ```
+添加流程图：  
+
 ![流程图](https://github.com/npvip/StudyNote/blob/master/img/put.png) 
+
+---
+* *HashMap的数组长度为什么是2的倍数？*  
+  
+在HashMap进行`put`操作时，首先需要得到要插入到数组中的位置index，通过分析源码得到index计算的步骤如下：  
+1. 如下HashMap中的hash函数源码，首先计算key.hashCode()得到键的hash码，然后用hash码的低16位和高16位做异或运算（这样做的目的是让二进制表示中的"1"变得更加均匀
+，散列的本意就是要尽量均匀分布）。  
+```
+// HashMap中的hash函数
+static final int hash(Object key) {
+        int h;
+        // 注意！键为null时会插入到数组的第一个位置0
+        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    }
+```
+2. 通过1中的hash函数得到h后，会进行h & (length - 1)的运算得到index。  
+
+如果数组的长度是2的倍数，那么（length - 1）的二进制表示会形如...00001111，即末尾n位都是1，前面都是0。在做 `与&` 运算时，值会对后面的n位进行运算，结果
+肯定是落在0～length-1之间。  
+如果数组的长度不是2的倍数，假设数组的长度是15，那么(length - 1) = 14的二进制为00001110,在与h进行 `与&` 运算时结果的最后一位肯定时0，那么数组中index
+末尾为1的（00001111，00001101，00001001等）就不会添加健值对对象，*造成内存空间浪费*。  
+
+# 参考文章  
+https://github.com/Snailclimb/JavaGuide/blob/master/Java%E7%9B%B8%E5%85%B3/HashMap.md  
+https://blog.csdn.net/Maxiao1204/article/details/80729657
