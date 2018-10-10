@@ -23,7 +23,6 @@ public class ByteBufferDemo {
     public static void practice(){
         ByteBuffer byteBuffer=ByteBuffer.allocate(1024);
 
-        System.out.println(byteBuffer.position()); //0
         System.out.println(byteBuffer.limit()); //1024
         System.out.println(byteBuffer.capacity()); //1024
 

@@ -4,17 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--后置处理器-->
-    <ssm.bean id="testBeanPostProcessor" class="cn.np.spring.TestBeanPostProcessor"></ssm.bean>
+    <bean id="testBeanPostProcessor" class="cn.np.spring.TestBeanPostProcessor"></bean>
 
-    <ssm.bean id="beanLifeCycle" class="cn.np.spring.BeanLifeCycle" init-method="init" destroy-method="close">
+    <bean id="beanLifeCycle" class="cn.np.spring.BeanLifeCycle" init-method="init" destroy-method="close">
         <property name="name" value="np"></property>
         <property name="age" value="18"></property>
-    </ssm.bean>
+    </bean>
 
-    <ssm.bean id="helloWordBean" class="cn.np.spring.HelloWordBean">
+    <bean id="helloWordBean" class="cn.np.spring.HelloWordBean">
         <property name="name" value="你好"></property>
         <property name="size" value="1"></property>
-    </ssm.bean>
+    </bean>
 
 
 </beans>

@@ -63,6 +63,12 @@ public class ChannelDemo {
 
     }
 
+    /**
+     * 复制文件
+     * @param inPath
+     * @param outPath
+     * @throws IOException
+     */
     public static void copyFileByChannel(String inPath,String outPath) throws IOException {
         FileChannel inChannel=FileChannel.open(Paths.get(inPath),StandardOpenOption.READ);
         FileChannel outChannel=FileChannel.open(Paths.get(outPath),StandardOpenOption.WRITE,StandardOpenOption.CREATE_NEW);
