@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.np.mybatis.mapper.EmployeeMapper">
+
+    <select id="queryEmp" resultType="cn.np.mybatis.bean.Employee">
+        select * from employee;
+    </select>
+    
+    <insert id="addEmp" parameterType="cn.np.mybatis.bean.Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into employee(name, age, sex, department)
+        values(#{name}, #{age}, #{sex}, #{department})
+    </insert>
+
+    <select id="queryEmpById" resultType="cn.np.mybatis.bean.Employee">
+        select * from employee where id = #{idsadd}
+    </select>
+
+    <select id="queryEmpByNameAge" resultType="cn.np.mybatis.bean.Employee">
+        select * from employee where name = #{name} and age = #{age}
+    </select>
+
+
+</mapper>
