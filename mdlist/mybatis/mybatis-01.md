@@ -125,7 +125,107 @@ ${}:取出的值直接拼接在sql语句中，会有安全问题，应用场景�
 @MapKey("id")
 Map<Integer,Blog> queryMapByTitle(@Param("title")String title);
 ```
+#### resultMap  
+1. 关联查询-级联属性  
+```
+public class Employee {
+    private int id;
+    private String name;
+    private int age;
+    private String sex;
+    private Department department;
+    
+    //setter(),getter()省略
+}
 
+public class Department {
+    private int id;
+    private String deptName;
+    // 使用collection
+    private List<Employee> emps;
+    //setter(),getter()省略
+}
+
+```
+查询出员工的信息以及部门信息：  
+```
+public interface EmployeeMapper {
+    // 关联查询-级联属性结果
+    Employee queryEmpAndDept(@Param("id") Integer id);
+}
+```
+```
+<!-- 使用级联属性 -->
+<resultMap id="myEmp" type="cn.np.mybatis.bean.Employee">
+    <id property="id" column="id"></id>
+    <result property="name" column="name"></result>
+    <result property="age" column="age"></result>
+    <result property="sex" column="sex"></result>
+    <!-- department属性 -->
+    <result property="department.id" column="did"></result>
+    <result property="department.deptName" column="dept_name"></result>
+</resultMap>
+
+<select id="queryEmpAndDept" resultMap="myEmp">
+   select e.id id,e.name name,e.age age,e.sex sex,e.salary salary,d.id did,d.dept_name dept_name
+   from employee e, tbl_dept d
+   where e.dept_id = d.id and e.id = #{id}
+</select>
+```
+  
+2. association  
+使用association可以指定联合的java bean对象。  
+```
+<resultMap id="empDeptMap" type="cn.np.mybatis.bean.Employee">
+    <id property="id" column="id"></id>
+    <result property="name" column="name"></result>
+    <result property="age" column="age"></result>
+    <result property="sex" column="sex"></result>
+    <!--  property指定外层java bean属性名称 -->
+    <association property="department" javaType="cn.np.mybatis.bean.Department">
+        <id property="id" column="did"></id>
+        <result property="deptName" column="dept_name"></result>
+    </association>
+</resultMap>
+
+<select id="queryEmpAndDept" resultMap="empDeptMap">
+   select e.id id,e.name name,e.age age,e.sex sex,e.salary salary,d.id did,d.dept_name dept_name
+   from employee e, tbl_dept d
+   where e.dept_id = d.id and e.id = #{id}
+</select>
+
+```  
+使用association还可以用分步查询得到上面的结果。具体实现：[具体实现](https://github.com/npvip/StudyNote/blob/master/src/main/java/cn/np/mybatis/mapper/BlogMapper.xml)    
+  
+3. collection  
+collection的作用与association相似。注意`ofType`属性，这个属性用来区分 JavaBean(或字段)属性类型和集合包含的类型。  
+```
+public interface DepartmentMapper {
+
+    Department queryDepartEmp(String name);
+}
+```
+```
+<resultMap id="departEmpMap" type="cn.np.mybatis.bean.Department">
+     <id property="id" column="did"></id>
+     <result property="deptName" column="dept_name"></result>
+   <collection property="emps" ofType="cn.np.mybatis.bean.Employee">
+     <result property="name" column="ename"></result>
+     <result property="age" column="age"></result>
+     <result property="sex" column="sex"></result>
+   </collection>
+</resultMap>
+
+<select id="queryDepartEmp" resultMap="departEmpMap">
+    select d.id did, d.dept_name dept_name, e.name ename, e.age age, e.sex sex
+    from tbl_dept d left join employee e on d.id = e.dept_id
+    where d.dept_name = #{name}
+</select>
+```
+
+
+#### 动态SQL  
+  
 
 
 ## 参考  
