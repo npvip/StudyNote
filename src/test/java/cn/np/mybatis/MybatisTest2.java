@@ -1,6 +1,8 @@
 package cn.np.mybatis;
 
+import cn.np.mybatis.bean.Department;
 import cn.np.mybatis.bean.Employee;
+import cn.np.mybatis.mapper.DepartmentMapper;
 import cn.np.mybatis.mapper.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.*;
@@ -48,7 +50,7 @@ public class MybatisTest2 {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
-            Employee employee = new Employee("babana", 24, "女", "业务部");
+            Employee employee = new Employee("babana", 24, "女");
             employeeMapper.addEmp(employee);
 
             System.out.println(employee.getId());
@@ -72,6 +74,35 @@ public class MybatisTest2 {
             System.out.println(employee);
             System.out.println(employee1);
             session.commit();
+        }finally {
+            session.close();
+        }
+    }
+
+    /**
+     * 关联查询-级联属性
+     */
+    @Test
+    public void testQueryEmpAndDept() {
+        SqlSessionFactory sqlSessionFactory =  getSqlSessionFactory();
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+            Employee employee = employeeMapper.queryEmpAndDept(7);
+            System.out.println(employee);
+        }finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testQueryDept() {
+        SqlSessionFactory sqlSessionFactory =  getSqlSessionFactory();
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+            Department department = departmentMapper.queryDepartEmp("人事部");
+            System.out.println(department);
         }finally {
             session.close();
         }

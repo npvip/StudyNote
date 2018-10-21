@@ -17,6 +17,7 @@
 
     <mappers>
         <mapper resource="cn/np/mybatis/mapper/EmployeeMapper.xml"></mapper>
+        <mapper resource="cn/np/mybatis/mapper/DepartmentMapper.xml"></mapper>
     </mappers>
 
 </configuration>

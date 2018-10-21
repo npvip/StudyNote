@@ -9,16 +9,15 @@ public class Employee {
     private String name;
     private int age;
     private String sex;
-    private String department;
+    private Department department;
 
     public Employee() {
     }
 
-    public Employee(String name, int age, String sex, String department) {
+    public Employee(String name, int age, String sex) {
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.department = department;
     }
 
     public int getId() {
@@ -53,11 +52,13 @@ public class Employee {
         this.sex = sex;
     }
 
-    public String getDepartment() {
+
+
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
@@ -68,7 +69,6 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
-                ", department='" + department + '\'' +
                 '}';
     }
 }

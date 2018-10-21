@@ -21,4 +21,7 @@ public interface EmployeeMapper {
 
     // 查-多个参数
     Employee queryEmpByNameAge(@Param("name") String name, @Param("age") Integer age);
+
+    // 关联查询-级联属性结果
+    Employee queryEmpAndDept(@Param("id") Integer id);
 }

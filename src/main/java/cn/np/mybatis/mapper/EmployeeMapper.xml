@@ -4,13 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.np.mybatis.mapper.EmployeeMapper">
 
+    <resultMap id="myEmp" type="cn.np.mybatis.bean.Employee">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="department.id" column="did"></result>
+        <result property="department.deptName" column="dept_name"></result>
+    </resultMap>
+
+    <resultMap id="empDeptMap" type="cn.np.mybatis.bean.Employee">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <association property="department" javaType="cn.np.mybatis.bean.Department">
+            <id property="id" column="did"></id>
+            <result property="deptName" column="dept_name"></result>
+        </association>
+    </resultMap>
+
     <select id="queryEmp" resultType="cn.np.mybatis.bean.Employee">
         select * from employee;
     </select>
     
     <insert id="addEmp" parameterType="cn.np.mybatis.bean.Employee" useGeneratedKeys="true" keyProperty="id">
-        insert into employee(name, age, sex, department)
-        values(#{name}, #{age}, #{sex}, #{department})
+        insert into employee(name, age, sex)
+        values(#{name}, #{age}, #{sex})
     </insert>
 
     <select id="queryEmpById" resultType="cn.np.mybatis.bean.Employee">
@@ -19,6 +39,12 @@
 
     <select id="queryEmpByNameAge" resultType="cn.np.mybatis.bean.Employee">
         select * from employee where name = #{name} and age = #{age}
+    </select>
+
+    <select id="queryEmpAndDept" resultMap="empDeptMap">
+        select e.id id,e.name name,e.age age,e.sex sex,e.salary salary,d.id did,d.dept_name dept_name
+        from employee e, tbl_dept d
+        where e.dept_id = d.id and e.id = #{id}
     </select>
 
 
