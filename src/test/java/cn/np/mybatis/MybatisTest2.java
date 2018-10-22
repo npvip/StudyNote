@@ -101,8 +101,10 @@ public class MybatisTest2 {
         SqlSession session = sqlSessionFactory.openSession();
         try {
             DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
-            Department department = departmentMapper.queryDepartEmp("人事部");
-            System.out.println(department);
+            Department department = departmentMapper.queryDepartEmp("信息部");
+            System.out.println(department.getDeptName());
+            System.out.println("----");
+            System.out.println(department.getEmps());
         }finally {
             session.close();
         }

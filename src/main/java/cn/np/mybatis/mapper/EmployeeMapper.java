@@ -24,4 +24,6 @@ public interface EmployeeMapper {
 
     // 关联查询-级联属性结果
     Employee queryEmpAndDept(@Param("id") Integer id);
+
+    Employee queryEmpByDeptid(@Param("deptId")Integer id);
 }

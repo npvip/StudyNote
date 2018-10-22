@@ -223,10 +223,70 @@ public interface DepartmentMapper {
 </select>
 ```
 
+collection还可以使用延迟加载(association也可以)，关键词是`fetchType`：`eager`为立即执行;`lazy`为延迟加载，即当被需要的时候（调用）会进行查询。  
+```
+<resultMap id="departEmpMap2" type="cn.np.mybatis.bean.Department">
+    <id property="id" column="did"></id>
+    <result property="deptName" column="dept_name"></result>
+  <!-- fetchType=lazy延迟查询 -->
+  <collection property="emps" select="cn.np.mybatis.mapper.EmployeeMapper.queryEmpByDeptid" column="did" fetchType="lazy">
+  </collection>
+</resultMap>
+<!-- DepartmentMapper.xml查询片段 -->
+<select id="queryDepartEmp" resultMap="departEmpMap2">
+    select d.id did, d.dept_name dept_name
+    from tbl_dept d
+    where d.dept_name = #{name}
+</select>
+
+<!-- EmployeeMapper.xml查询片段 -->
+<select id="queryEmpByDeptid" resultType="cn.np.mybatis.bean.Employee">
+   select * from employee where dept_id = #{deptId}
+</select>
+```
+
+4. 鉴别器-discriminator  
+可以根据查询结果的某字段进行不同的操作。  
+
+
 
 #### 动态SQL  
+动态SQL是MyBatis的强大特性之一。  
+* if  
+* choose(when,otherwise)
+* trim(where,set)
+* foreach
   
+详细例子官方文档写的很详细[MySQL动态SQL](http://www.mybatis.org/mybatis-3/zh/dynamic-sql.html)  
 
+#### 缓存
+MyBatis包含一个强大的查询缓存特性，它可以非常方便地配置和定制。缓存可以极大的提高查询效率。  
+MyBatis系统中默认定义了两级缓存，**一级缓存**和**二级缓存**。  
+* 默认情况下，只有一级缓存（ SqlSession级别的缓存，也称本地缓存）开启  
+* 二级缓存需要手动开启和配置，是基于namespace级别的缓存  
+* 扩展性，定义了缓存接口Cache，可以通过实现Cache接口来自定义二级缓存  
+  
+1. 一级缓存  
+ 与数据库同一次会话期间查询到的数据会放在本地缓存中。  
+ 失效的情况：  
+（1）sqlSession不同；  
+（2）sqlSession相同，查询条件不同；  
+（3）sqlSession相同，两次查询中间执行了任一增删改操作；    
+（4）sqlSession相同，清除缓存clearCache。  
+2. 二级缓存  
+ 二级缓存使用步骤：      
+ (1) 开启全局二级缓存配置： &lt; setting name="cacheEnabled" value="true" /&gt;     
+ (2)mapper.xml文件中配置使用二级缓存:&lt;cache&gt; &lt;/cache&gt;     
+     eviction:缓存回收策略：  
+     * LRU:**默认**，最近最少使用的：移除最长时间不被使用的对象  
+     * FIFO:先进先出，按照对象进入缓存的顺序移除  
+     * SOFT:软引用，移除基于垃圾回收器状态和软引用规则的对象  
+     * WEAK:弱引用，更积极的移除基于垃圾回收状态的弱引用规则的对象  
+     flushInterval: 缓存刷新间隔，默认是不清空  
+     readOnly:是否只读，默认是false  
+     size:缓存放多少元素  
+     type:指定自定义缓存的全类名  
+（3）pojo需要实现序列化接口Serializable           
 
 ## 参考  
 * mybatis参考文档：http://www.mybatis.org/mybatis-3/zh/index.html  

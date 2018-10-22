@@ -47,5 +47,9 @@
         where e.dept_id = d.id and e.id = #{id}
     </select>
 
+    <select id="queryEmpByDeptid" resultType="cn.np.mybatis.bean.Employee">
+        select * from employee where dept_id = #{deptId}
+    </select>
+
 
 </mapper>
