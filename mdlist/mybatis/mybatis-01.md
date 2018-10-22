@@ -277,15 +277,15 @@ MyBatis系统中默认定义了两级缓存，**一级缓存**和**二级缓存*
  二级缓存使用步骤：      
  (1) 开启全局二级缓存配置： &lt; setting name="cacheEnabled" value="true" /&gt;     
  (2)mapper.xml文件中配置使用二级缓存:&lt;cache&gt; &lt;/cache&gt;     
-     eviction:缓存回收策略：  
-     * LRU:**默认**，最近最少使用的：移除最长时间不被使用的对象  
-     * FIFO:先进先出，按照对象进入缓存的顺序移除  
-     * SOFT:软引用，移除基于垃圾回收器状态和软引用规则的对象  
-     * WEAK:弱引用，更积极的移除基于垃圾回收状态的弱引用规则的对象  
-     flushInterval: 缓存刷新间隔，默认是不清空  
-     readOnly:是否只读，默认是false  
-     size:缓存放多少元素  
-     type:指定自定义缓存的全类名  
+     * eviction:缓存回收策略：  
+       * LRU:**默认**，最近最少使用的：移除最长时间不被使用的对象  
+       * FIFO:先进先出，按照对象进入缓存的顺序移除  
+       * SOFT:软引用，移除基于垃圾回收器状态和软引用规则的对象  
+       * WEAK:弱引用，更积极的移除基于垃圾回收状态的弱引用规则的对象  
+     * flushInterval: 缓存刷新间隔，默认是不清空  
+     * readOnly:是否只读，默认是false  
+     * size:缓存放多少元素  
+     * type:指定自定义缓存的全类名  
 （3）pojo需要实现序列化接口Serializable           
 
 ## 参考  
