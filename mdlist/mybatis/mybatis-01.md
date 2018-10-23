@@ -276,7 +276,7 @@ MyBatis系统中默认定义了两级缓存，**一级缓存**和**二级缓存*
 2. 二级缓存  
  二级缓存使用步骤：      
  (1) 开启全局二级缓存配置： &lt; setting name="cacheEnabled" value="true" /&gt;     
- (2)mapper.xml文件中配置使用二级缓存:&lt;cache&gt; &lt;/cache&gt;     
+ (2) mapper.xml文件中配置使用二级缓存:&lt;cache&gt; &lt;/cache&gt;     
      * eviction:缓存回收策略：  
        * LRU:**默认**，最近最少使用的：移除最长时间不被使用的对象  
        * FIFO:先进先出，按照对象进入缓存的顺序移除  
