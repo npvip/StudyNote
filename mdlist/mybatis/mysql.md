@@ -1,5 +1,6 @@
-# MySQL语句
-
+# MySQL
+## 安装
+* windows安装5.x.x版本压缩版[windows安装压缩版](https://blog.csdn.net/y5946/article/details/78434525)  
 ## 用户 
 ### 创建用户名为test，密码为test_1234的本地用户：   
 ```sql
