@@ -24,11 +24,13 @@ GRANT 权限 ON 权限范围 TO 用户;
 #### 修改表结构  
 1. 修改字段名称  
 ```sql
-ALTER TABLE [表名] CHANGE COLUMN [原列名] [新列名] [类型约束];
+ALTER TABLE [表名] CHANGE [旧字段名] [新字段名] [新数据类型];
+-- 例子
+ALTER TABLE table1 CHANGE column1 cloumn2 varchar(32) DEFAULT NULL COMMENT '注释';
 ```
 2. 修改字段数据类型  
 ```sql
-ALTER TABLE [表名] MODIFY [列名] [数据类型];
+ALTER TABLE [表名] MODIFY COLUMN [列名] [数据类型];
 ``` 
   
   
