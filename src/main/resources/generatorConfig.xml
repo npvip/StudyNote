@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    
+    <classPathEntry location="/usr/local/mvnrepo/mysql/mysql-connector-java/8.0.12/mysql-connector-java-8.0.12.jar"></classPathEntry>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mybatis_test"
+                        userId="test"
+                        password="test_1234">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 指定java bean的生产策略 -->
+        <javaModelGenerator targetPackage="cn.np.mybatis.example.bean" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- sql映射生产策略 -->
+        <sqlMapGenerator targetPackage="cn.np.mybatis.example.dao"  targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- mapper接口所在位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.np.mybatis.example.dao"  targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 指定表 -->
+        <table tableName="tbl_dept" domainObjectName="Department"></table>
+        <table tableName="employee" domainObjectName="Employee"></table>
+
+    </context>
+</generatorConfiguration>
