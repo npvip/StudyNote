@@ -1,5 +1,7 @@
 package cn.np.designpattern.part01;
 
+import org.apache.log4j.MDC;
+
 /**
  * @author np
  * @date 2018/10/13
@@ -20,6 +22,7 @@ public class Singleton {
         if (singleton == null) {
             singleton = new Singleton();
         }
+
         return singleton;
     }
 }
