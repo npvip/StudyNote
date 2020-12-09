@@ -1,1 +1,140 @@
-<mxfile host="app.diagrams.net" modified="2020-12-09T02:28:58.141Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" version="13.11.0" etag="Lm3oANum8PPBfgfE8jO0" type="github"><diagram id="xKnvsgtY8TzZYuikseii">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-12-09T03:26:52.616Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="NBNmO96jdAMsRX6H2pvX" version="13.11.0" type="github">
+  <diagram id="xKnvsgtY8TzZYuikseii" name="第 1 页">
+    <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-1" target="CNySeZ2GSVWBnu3Stss1-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-1" value="开始" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-2" target="CNySeZ2GSVWBnu3Stss1-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-2" value="获取方法上注解@Adaptive" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="155" y="305" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-4" target="CNySeZ2GSVWBnu3Stss1-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-9" value="否" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CNySeZ2GSVWBnu3Stss1-7">
+          <mxGeometry x="-0.2222" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-4" target="CNySeZ2GSVWBnu3Stss1-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="335" />
+              <mxPoint x="480" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-13" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CNySeZ2GSVWBnu3Stss1-11">
+          <mxGeometry x="-0.2381" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-4" value="是否被@Adaptive修饰" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="350" y="295" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-6" value="生成代码抛出UnsupportedOperationException" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="465" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-8" value="&lt;div&gt;throw new UnsupportedOperationException(&quot;The method %s of interface %s is not adaptive method!&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="-146" y="660" width="560" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-10" target="CNySeZ2GSVWBnu3Stss1-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-10" value="获取方法的参数" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="550" y="305" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-14" target="CNySeZ2GSVWBnu3Stss1-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-26" value="否" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CNySeZ2GSVWBnu3Stss1-17">
+          <mxGeometry x="-0.2222" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-14" target="CNySeZ2GSVWBnu3Stss1-24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="335" />
+              <mxPoint x="880" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-14" value="参数中是否包含URL" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="295" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-16" target="CNySeZ2GSVWBnu3Stss1-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-16" value="遍历参数对象中是否存在public URL getUrl()方法" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="750" y="465" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-18" target="CNySeZ2GSVWBnu3Stss1-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="635" />
+              <mxPoint x="750" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-18" target="CNySeZ2GSVWBnu3Stss1-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-27" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CNySeZ2GSVWBnu3Stss1-23">
+          <mxGeometry x="-0.2889" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-18" value="是否存在getUrl(）" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="595" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-20" value="生成代码抛出异常" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="590" y="605" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-22" target="CNySeZ2GSVWBnu3Stss1-28">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-22" value="生成代码：&lt;br&gt;1.校验arg是否为null&lt;br&gt;2.校验arg.getUrl是否为null&lt;br&gt;3.通过arg.getUrl赋值给Url" style="whiteSpace=wrap;html=1;strokeWidth=2;align=left;" vertex="1" parent="1">
+          <mxGeometry x="735" y="765" width="150" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-24" target="CNySeZ2GSVWBnu3Stss1-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-24" value="生成代码校验URL为空" style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="910" y="305" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-28" target="CNySeZ2GSVWBnu3Stss1-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-28" value="获取方法上设置的@Adaptive的值，如果未设置则取接口名驼峰分割转换为点隔开，结果放入String[] value" style="whiteSpace=wrap;html=1;strokeWidth=2;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="297.5" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-32" target="CNySeZ2GSVWBnu3Stss1-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-32" value="如果方法的参数里包含Invocation，则生成校验Invocation为null的代码块" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="305" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CNySeZ2GSVWBnu3Stss1-34" target="CNySeZ2GSVWBnu3Stss1-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-34" value="生成给extName赋值的代码" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1534" y="305" width="136" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CNySeZ2GSVWBnu3Stss1-46" value="结束" style="ellipse;whiteSpace=wrap;html=1;align=center;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="297.5" width="82" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
