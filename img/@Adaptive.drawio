@@ -1,1 +1,73 @@
-<mxfile host="app.diagrams.net" modified="2020-12-18T11:22:39.540Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3938.0 Safari/537.36" version="14.0.1" etag="K3W9DSLuPnMG6VSKQCIy" type="github"><diagram id="vy1Q4Q4kaOn7qJITPUAI">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-12-18T11:40:28.553Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3938.0 Safari/537.36" etag="9bUp4OVGJHyN9K6DO8yL" version="14.0.1" type="github">
+  <diagram id="vy1Q4Q4kaOn7qJITPUAI" name="Page-1">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="29u21Vm05w11vjW1gdwK-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-1" target="29u21Vm05w11vjW1gdwK-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-1" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_2;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="90" y="300" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-2" target="29u21Vm05w11vjW1gdwK-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-2" value="从ExtensionLoader获取缓存的cachedAdaptiveInstance" style="whiteSpace=wrap;html=1;strokeWidth=2;align=left;" vertex="1" parent="1">
+          <mxGeometry x="170" y="290" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-4" target="29u21Vm05w11vjW1gdwK-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-4" value="&lt;span&gt;cachedAdaptiveInstance==null?&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="414" y="270" width="186" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-6" target="29u21Vm05w11vjW1gdwK-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-6" value="创建adaptive实例并缓存" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="713" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-8" target="29u21Vm05w11vjW1gdwK-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-8" value="查询是否有@Adaptive修饰的类" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="913" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-10" target="29u21Vm05w11vjW1gdwK-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-10" value="cachedAdaptiveClass==null?" style="rhombus;whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1133" y="280" width="167" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-12" target="29u21Vm05w11vjW1gdwK-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-12" value="动态生成adaptive代码，字符串拼接" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1403.5" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-14" target="29u21Vm05w11vjW1gdwK-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-14" value="默认使用javassist编译生成Xxx$Adaptive类" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1603.5" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-16" target="29u21Vm05w11vjW1gdwK-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-16" value="使用newInstance实例化" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1803.5" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="29u21Vm05w11vjW1gdwK-18" target="29u21Vm05w11vjW1gdwK-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-18" value="injectExtension,通过setter方法注入依赖的Extension或Spring Bean" style="whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="2003.5" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="29u21Vm05w11vjW1gdwK-20" value="" style="ellipse;whiteSpace=wrap;html=1;align=left;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="292.5" width="56.5" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
